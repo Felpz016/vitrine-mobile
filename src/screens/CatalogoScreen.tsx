@@ -65,3 +65,4 @@ const styles = StyleSheet.create({
   lista: { marginTop: 16 },
   vazio: { color: CORES.textoSuave, textAlign: 'center', marginTop: 40 },
 });
+

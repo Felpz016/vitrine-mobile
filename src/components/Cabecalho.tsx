@@ -33,3 +33,4 @@ const styles = StyleSheet.create({
   },
   seloTexto: { color: CORES.texto, fontSize: 12 },
 });
+
