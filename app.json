@@ -1,33 +1,18 @@
 {
   "expo": {
-    "name": "vitrine-mobile",
+    "name": "Vitrine",
     "slug": "vitrine-mobile",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
-    "userInterfaceStyle": "light",
-    "newArchEnabled": true,
-    "splash": {
-      "image": "./assets/splash-icon.png",
-      "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
-    },
-    "ios": {
-      "supportsTablet": true
-    },
+    "scheme": "vitrine",
+    "userInterfaceStyle": "automatic",
+    "ios": { "supportsTablet": true },
     "android": {
-      "adaptiveIcon": {
-        "foregroundImage": "./assets/adaptive-icon.png",
-        "backgroundColor": "#ffffff"
-      },
-      "edgeToEdgeEnabled": true,
-      "predictiveBackGestureEnabled": false
+      "___": "MANTENHA AQUI O SEU BLOCO android ORIGINAL"
     },
-    "web": {
-      "favicon": "./assets/favicon.png"
-    },
-    "plugins": [
-      "expo-status-bar"
-    ]
+    "web": { "favicon": "./assets/favicon.png" },
+    "plugins": ["expo-router"],
+    "experiments": { "typedRoutes": true }
   }
 }
