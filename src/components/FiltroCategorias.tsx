@@ -1,5 +1,4 @@
-import { Pressable, ScrollView, StyleSheet, Text } from 'react-native';
-import { CORES } from '@/constants/tema';
+import { Pressable, ScrollView, Text } from 'react-native';
 
 interface FiltroCategoriasProps {
   categorias: string[];
@@ -15,8 +14,9 @@ export function FiltroCategorias({
   return (
     <ScrollView
       horizontal
+      className="grow-0"
       showsHorizontalScrollIndicator={false}
-      contentContainerStyle={styles.linha}
+      contentContainerClassName="flex-row items-start gap-2 py-1"
     >
       {categorias.map((categoria) => {
         const ativa = categoria === selecionada;
@@ -26,11 +26,20 @@ export function FiltroCategorias({
             onPress={() => aoSelecionar(categoria)}
             accessibilityRole="button"
             accessibilityLabel={`Filtrar por ${categoria}`}
-            style={[styles.chip, ativa && styles.chipAtivo]}
+            className={`px-4 py-2.5 rounded-full active:opacity-60 ${
+              ativa ? 'bg-destaque' : 'bg-superficie'
+            }`}
           >
-            <Text style={[styles.texto, ativa && styles.textoAtivo]}>
+            <Text
+              className={`px-4 py-2.5 rounded-full active:opacity-60 ${
+  ativa
+    ? 'bg-sky-600 dark:bg-destaque'
+    : 'bg-slate-200 dark:bg-superficie'
+}`}
+            >
               {categoria}
             </Text>
+            
           </Pressable>
         );
       })}
@@ -38,15 +47,3 @@ export function FiltroCategorias({
   );
 }
 
-const styles = StyleSheet.create({
-  linha: { flexDirection: 'row', gap: 8, paddingVertical: 4 },
-  chip: {
-    paddingHorizontal: 14,
-    paddingVertical: 10,
-    borderRadius: 999,
-    backgroundColor: CORES.superficie,
-  },
-  chipAtivo: { backgroundColor: CORES.destaque },
-  texto: { color: CORES.textoSuave, fontSize: 13 },
-  textoAtivo: { color: CORES.fundo, fontWeight: 'bold' },
-});
