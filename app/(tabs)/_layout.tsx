@@ -1,35 +1,44 @@
-import '../global.css';
-import { useEffect } from 'react';
-import { Stack } from 'expo-router';
-import { StatusBar } from 'expo-status-bar';
+import { Tabs } from 'expo-router';
+import { Ionicons } from '@expo/vector-icons';
 import { useColorScheme } from 'nativewind';
+import { BotaoTema } from '@/components/BotaoTema';
 import { CORES_NAVEGACAO } from '@/constants/tema';
 
-export default function LayoutRaiz() {
-  const { colorScheme, setColorScheme } = useColorScheme();
+export default function LayoutAbas() {
+  const { colorScheme } = useColorScheme();
   const cores = CORES_NAVEGACAO[colorScheme === 'dark' ? 'dark' : 'light'];
 
-  useEffect(() => {
-    setColorScheme(colorScheme ?? 'light');
-  }, []);
-
   return (
-    <>
-      <Stack
-        screenOptions={{
-          headerStyle: { backgroundColor: cores.fundo },
-          headerTintColor: cores.destaque,
-          headerTitleStyle: { color: cores.texto },
-          contentStyle: { backgroundColor: cores.fundo },
+    <Tabs
+      screenOptions={{
+        tabBarActiveTintColor: cores.destaque,
+        tabBarInactiveTintColor: cores.inativo,
+        tabBarStyle: { backgroundColor: cores.fundo, borderTopColor: cores.borda },
+        headerStyle: { backgroundColor: cores.fundo },
+        headerTintColor: cores.texto,
+        headerRight: () => <BotaoTema />,
+        // NOVO: fundo das telas das abas, nos dois temas
+        sceneStyle: { backgroundColor: cores.fundo },
+      }}
+    >
+      <Tabs.Screen
+        name="index"
+        options={{
+          title: 'Catálogo',
+          tabBarIcon: ({ color, size }) => (
+            <Ionicons name="grid-outline" color={color} size={size} />
+          ),
         }}
-      >
-        <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-        <Stack.Screen
-          name="produto/[id]"
-          options={{ title: 'Detalhe do produto' }}
-        />
-      </Stack>
-      <StatusBar style={colorScheme === 'dark' ? 'light' : 'dark'} />
-    </>
+      />
+      <Tabs.Screen
+        name="favoritos"
+        options={{
+          title: 'Favoritos',
+          tabBarIcon: ({ color, size }) => (
+            <Ionicons name="star-outline" color={color} size={size} />
+          ),
+        }}
+      />
+    </Tabs>
   );
 }
