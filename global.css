@@ -1,3 +1,6 @@
+/* Ponto de entrada do Tailwind. As três diretivas mandam gerar as camadas
+   do Tailwind: base (normalização), components e utilities (as classes).
+   É importado uma vez, no app/_layout.tsx, e vale para o app inteiro. */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
