@@ -15,9 +15,23 @@ Expo SDK 57, React Native 0.86, React 19.2.3, TypeScript estrito, Expo Router (a
 | `app/produto/[id].tsx` | Detalhe do produto |
 | `src/components/` | `CardProduto`, `FiltroCategorias`, `BotaoTema`, `CampoTexto` |
 | `src/constants/` | Produtos de exemplo e cores do tema |
+| `public/simulador.html` | Simulador: o app web dentro de uma moldura de celular |
+| `iniciar.cmd` / `iniciar.ps1` | Atalho de um clique que liga o Expo e abre o simulador |
 | `src/validacao/` | Esquemas Yup do login e do cadastro |
 
 ## Como rodar
+
+### Com simulador de celular no navegador (Windows)
+
+Dê dois cliques em `iniciar.cmd` na pasta do projeto (ou rode `.\iniciar.cmd` no PowerShell). Ele instala as dependências na primeira vez, liga o Expo e abre no navegador o **simulador**: a Vitrine dentro de uma moldura de celular, sem precisar do Expo Go.
+
+- Endereço: http://localhost:8081/simulador.html (dá para trocar o aparelho no topo: iPhone 17 Pro, Pro Max, SE ou Android).
+- Salvou um arquivo? O app no simulador atualiza sozinho. O `console.log` aparece no F12 › Console.
+- O simulador mostra a versão web do app (`react-native-web`). O QR code continua no terminal para conferir no celular, porque alguns erros só aparecem no aparelho.
+
+<img src="docs/img/simulador.png" alt="Vitrine no simulador do navegador" width="480">
+
+### Manualmente
 
 ```powershell
 npm install
